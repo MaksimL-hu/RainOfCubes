@@ -849,7 +849,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 25, y: 1, z: 25}
+  m_LocalScale: {x: 30, y: 1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 545378101}
@@ -1086,9 +1086,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainPlatform: {fileID: 1151943698}
   _prefab: {fileID: 1394177331205209937, guid: 60ce9fdf09b8acb408ecd0fb366a4a0f, type: 3}
-  _offsetX: 12
+  _offsetX: 11
   _offsetY: 20
-  _offsetZ: 12
+  _offsetZ: 11
   _repeatRate: 0.1
   _poolCapacity: 20
   _poolMaxSize: 40
