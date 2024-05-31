@@ -23,6 +23,14 @@ public class Cube : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<Platform>(out Platform platform))
+        {
+            Hit();
+        }
+    }
+
     private void SetRangomColor()
     {
         _meshRenderer.material.color = UnityEngine.Random.ColorHSV();
@@ -58,7 +66,7 @@ public class Cube : MonoBehaviour
         _rigidbody.velocity = Vector3.zero;
     }
 
-    public void OnHit()
+    private void Hit()
     {
         if (_isHit == false)
         {
