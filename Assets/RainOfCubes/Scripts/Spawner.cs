@@ -7,9 +7,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform _mainPlatform;
     [SerializeField] private Cube _prefab;
 
-    [SerializeField] private float _offsetX;
-    [SerializeField] private float _offsetY;
-    [SerializeField] private float _offsetZ;
+    [SerializeField] private Vector3 _offset;
 
     [SerializeField] private float _repeatRate = 1.0f;
     [SerializeField] private int _poolCapacity = 20;
@@ -23,7 +21,7 @@ public class Spawner : MonoBehaviour
     private void Awake()
     {
         _positionX = _mainPlatform.transform.position.x;
-        _positionY = _mainPlatform.transform.position.y + _offsetY;
+        _positionY = _mainPlatform.transform.position.y + _offset.y;
         _positionZ = _mainPlatform.transform.position.z;
 
         _pool = new ObjectPool<Cube>(
@@ -44,7 +42,7 @@ public class Spawner : MonoBehaviour
     private Cube InstantiateCube()
     {
         Cube cube = Instantiate(_prefab);
-        cube.OnSwitching += ReleaseCube;
+        cube.Switched += ReleaseCube;
 
         return cube;
     }
@@ -73,16 +71,16 @@ public class Spawner : MonoBehaviour
 
     private void DestroyCube(Cube cube)
     {
-        cube.OnSwitching -= ReleaseCube;
+        cube.Switched -= ReleaseCube;
         Destroy(cube);
     }
 
     private Vector3 GetRandomSpawnPoint()
     {
         Vector3 spawnPoint = new Vector3(
-            Random.Range(_positionX - _offsetX, _positionX + _offsetX),
+            Random.Range(_positionX - _offset.x, _positionX + _offset.x),
             _positionY,
-            Random.Range(_positionZ - _offsetZ, _positionZ + _offsetZ)
+            Random.Range(_positionZ - _offset.z, _positionZ + _offset.z)
             );
 
         return spawnPoint;

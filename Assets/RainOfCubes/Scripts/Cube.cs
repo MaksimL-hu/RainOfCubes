@@ -14,7 +14,7 @@ public class Cube : MonoBehaviour
     private MeshRenderer _meshRenderer;
     private Rigidbody _rigidbody;
 
-    public event Action<Cube> OnSwitching;
+    public event Action<Cube> Switched;
 
     private void Awake()
     {
@@ -44,16 +44,10 @@ public class Cube : MonoBehaviour
     private IEnumerator Switching()
     {
         int livingTime = GetRandomLivingTime();
-        float elapsedTime = 0f;
+        
+        yield return new WaitForSeconds(livingTime);
 
-        while (elapsedTime < livingTime)
-        {
-            elapsedTime += Time.deltaTime;
-
-            yield return null;
-        }
-
-        OnSwitching?.Invoke(this);
+        Switched?.Invoke(this);
     }
 
     public void Reset()
