@@ -31,6 +31,16 @@ public class Cube : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        _isHit = false;
+        _meshRenderer.material = _standartMaterial;
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+        _rigidbody.rotation = Quaternion.Euler(Vector3.zero);
+        _rigidbody.angularVelocity = Vector3.zero;
+        _rigidbody.velocity = Vector3.zero;
+    }
+
     private void SetRangomColor()
     {
         _meshRenderer.material.color = UnityEngine.Random.ColorHSV();
@@ -48,16 +58,6 @@ public class Cube : MonoBehaviour
         yield return new WaitForSeconds(livingTime);
 
         Switched?.Invoke(this);
-    }
-
-    public void Reset()
-    {
-        _isHit = false;
-        _meshRenderer.material = _standartMaterial;
-        transform.rotation = Quaternion.Euler(Vector3.zero);
-        _rigidbody.rotation = Quaternion.Euler(Vector3.zero);
-        _rigidbody.angularVelocity = Vector3.zero;
-        _rigidbody.velocity = Vector3.zero;
     }
 
     private void Hit()

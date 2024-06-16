@@ -14,20 +14,19 @@ public class Spawner : MonoBehaviour
     [SerializeField] private int _poolMaxSize = 40;
 
     private ObjectPool<Cube> _pool;
-    private float _positionX;
-    private float _positionY;
-    private float _positionZ;
+    private Vector3 _position;
 
     private void Awake()
     {
-        _positionX = _mainPlatform.transform.position.x;
-        _positionY = _mainPlatform.transform.position.y + _offset.y;
-        _positionZ = _mainPlatform.transform.position.z;
+        _position = new Vector3(
+            _mainPlatform.transform.position.x, 
+            _mainPlatform.transform.position.y + _offset.y, 
+            _mainPlatform.transform.position.z);
 
         _pool = new ObjectPool<Cube>(
             createFunc: () => InstantiateCube(),
-            actionOnGet: (cube) => ActionOnGet(cube),
-            actionOnRelease: (cube) => ActionOnRelease(cube),
+            actionOnGet: (cube) => OnActionGet(cube),
+            actionOnRelease: (cube) => OnActionRelease(cube),
             actionOnDestroy: (cube) => DestroyCube(cube),
             collectionCheck: true,
             defaultCapacity: _poolCapacity,
@@ -47,7 +46,7 @@ public class Spawner : MonoBehaviour
         return cube;
     }
 
-    private void ActionOnGet(Cube cube)
+    private void OnActionGet(Cube cube)
     {
         cube.gameObject.SetActive(true);
         cube.Reset();
@@ -59,7 +58,7 @@ public class Spawner : MonoBehaviour
         _pool.Get();
     }
 
-    private void ActionOnRelease(Cube cube)
+    private void OnActionRelease(Cube cube)
     {
         cube.gameObject.SetActive(false);
     }
@@ -78,9 +77,9 @@ public class Spawner : MonoBehaviour
     private Vector3 GetRandomSpawnPoint()
     {
         Vector3 spawnPoint = new Vector3(
-            Random.Range(_positionX - _offset.x, _positionX + _offset.x),
-            _positionY,
-            Random.Range(_positionZ - _offset.z, _positionZ + _offset.z)
+            Random.Range(_position.x - _offset.x, _position.x + _offset.x),
+            _position.y,
+            Random.Range(_position.z - _offset.z, _position.z + _offset.z)
             );
 
         return spawnPoint;
