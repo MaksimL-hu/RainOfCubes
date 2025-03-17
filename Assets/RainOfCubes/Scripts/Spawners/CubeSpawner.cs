@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CubeSpawner : GenericSpawner<Cube>
 {
-    [Tooltip("Платформа над которой будут спавниться объекты")]
+    [Tooltip("The platform above which the cubes will spawn")]
     [SerializeField] private Transform _mainPlatform;
     [SerializeField] private Vector3 _offset;
 

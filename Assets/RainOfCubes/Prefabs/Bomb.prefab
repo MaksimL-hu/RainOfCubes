@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 9018863896617108601}
   - component: {fileID: 3412134698096374371}
   - component: {fileID: 5778746076200279788}
+  - component: {fileID: -4372998362474363504}
+  - component: {fileID: -5414361540287068038}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -149,6 +151,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinLivingTimeAfterHit: 2
   MaxLivingTimeAfterHit: 5
-  _explosionForce: 500
-  _explosionRadius: 10
-  _standartMaterial: {fileID: 2100000, guid: a563c4f0607b34794a3d5a88f6759ac9, type: 2}
+  _colorChanger: {fileID: -4372998362474363504}
+  _exploder: {fileID: -5414361540287068038}
+--- !u!114 &-4372998362474363504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2595720090088871617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25ec270fd70d994daabdcce966071c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5414361540287068038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2595720090088871617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31760f5d150e0384fab4a107ac26ff00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionForce: 200
+  _explosionRadius: 20
