@@ -2092,7 +2092,7 @@ MonoBehaviour:
   PoolMaxSize: 1000
   _mainPlatform: {fileID: 1151943698}
   _offset: {x: 12, y: 20, z: 12}
-  _repeatRate: 0.01
+  _repeatRate: 0.05
 --- !u!4 &1670537158
 Transform:
   m_ObjectHideFlags: 0
