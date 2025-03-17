@@ -1,0 +1,1 @@
+public class ShownerStatsBombs : ShownerStats<Bomb> { }
